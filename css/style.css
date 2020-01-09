@@ -1,0 +1,62 @@
+@charset "UTF-8";
+* {
+	margin:0;
+	padding:0;
+}
+
+body{
+	line-height: 0.8rem;
+}
+
+.container-fluid{
+	background-image: url(../img/backs.jpg);
+    padding-bottom: 0px ! important;
+    margin-bottom: 0px;
+    margin-top: 0px ! important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    zoom: 1;
+    background-color: #000;
+    background-size: cover;
+    background-position: center 0;
+    text-align: center;
+}
+
+.fspPICtitle{
+	width:80%;
+	height:auto;
+}
+
+.item-group{
+	position: relative;
+}
+
+.item{
+	width: 70%;
+	border: 1px solid #08d7ed;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,.2);
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.item-title{
+    margin: 10px;
+    line-height: 3;
+}
+
+.item-btn{
+    background-color: rgba(0,0,0,.2);
+    border: 0;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 2.5;
+    margin: 5px;
+    padding: 0px 100px;
+}
+
