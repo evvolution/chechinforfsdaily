@@ -5,17 +5,14 @@
  * modify：/
  */
 
-$(document).ready(function(){
-
+$(document).ready(function(){  
+    
 })
 
 var link = 'http://server.foshanplus.com/'
 var openid = getParam('openid');
+var choice = '';
 /*var openid = "1234567890123456789012345675";*/
-
-
-
-
 
     // $.ajax({
     //     type:"get",
@@ -31,6 +28,27 @@ var openid = getParam('openid');
     //         alert("当前投票人数过多，请稍后重试");
     //     }
     // })
+
+
+
+const btn = document.querySelector('#random');
+const el1 = document.querySelector('#group');
+const machine1 = new SlotMachine(el1, {
+    active: 0,
+    delay: 450,
+});
+
+function onComplete(active){
+    this.element.id = 'Index: ${this.active}';
+    choice = $('#greet' + this.active).html();
+    // alert(choice);
+    // console.log(this.active)
+}
+
+btn.addEventListener('click', () => {
+    machine1.shuffle(0, onComplete);
+});
+
 
 
 
