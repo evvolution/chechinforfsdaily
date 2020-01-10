@@ -30,7 +30,7 @@ body{
 }
 
 .title img{
-	width:90%;
+	width:86%;
 	height:auto;
 }
 
@@ -48,7 +48,7 @@ body{
 }
 
 .info{
-    color:#d8d8d8;
+    color:#c5b1b1;
     margin: 1rem 0;
 }
 
@@ -178,3 +178,17 @@ body{
     border-top:2px solid #e4ae45;
 }
 
+.opbtn{
+    width: 5rem;
+    height: 3rem;
+    border-radius: 1rem;
+    outline: none;
+}
+
+#random{
+    background: #c5b1b1;
+}
+
+#send{
+    background: #b96130;
+}

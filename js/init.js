@@ -41,7 +41,7 @@ const machine1 = new SlotMachine(el1, {
 function onComplete(active){
     this.element.id = 'Index: ${this.active}';
     choice = $('#greet' + this.active).html();
-    // alert(choice);
+    alert(choice);
     // console.log(this.active)
 }
 
