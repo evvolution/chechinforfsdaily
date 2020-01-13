@@ -47,6 +47,7 @@ function checkisHavePhone(){
         dataType:"json",
         success:function(data){
             if((data.results.length == 0) || (data.results[0].phone == "")){
+                alert(1)
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
@@ -73,7 +74,7 @@ function ischecked(){
         url: link + 'examlog/?exam=12&created_gte=' + todaydate + '&openid=' + openid,
         dataType:"json",
         success:function(data){
-            console.log(data);
+            // console.log(data);
             if(data.results.length == 0){
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","block");//显示签到
