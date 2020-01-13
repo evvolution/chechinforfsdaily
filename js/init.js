@@ -12,13 +12,13 @@ $(document).ready(function(){
 
 var link = 'http://server.foshanplus.com/'
 var openid = getParam('openid');
-// openid = 'odVsFj1xvasAMVEYem_0piux220Y';
+//  openid = 'odVsFj2syVFzvlPEYTID7L9k_hmw';
 var userid = '';
 var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
 var username = getParam('name');
-// username = '22223';
-var userfakephone = '';
+//  username = 'Gezelligheid';
+var userfakephone = 'fake';
 var todaydate = '2020-01-13';
 var choice = '';
 
@@ -47,7 +47,7 @@ function checkisHavePhone(){
         url: link + 'wxusers/?openid=' + openid,
         dataType:"json",
         success:function(datax){
-            // console.log(data);
+            console.log(datax);
             if((datax.results.length == 0)){
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
@@ -66,7 +66,7 @@ function checkisHavePhone(){
                         alert("系统繁忙，请重试");
                     }
                 })
-            }else if(datax.results[0].phone == ""){
+            }else if(datax.results[0].phone == "fake"){
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
