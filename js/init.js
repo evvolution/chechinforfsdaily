@@ -36,7 +36,7 @@ const machine1 = new SlotMachine(el1, {
 function onComplete(active){
     this.element.id = 'Index: ${this.active}';
     choice = $('#greet' + (Number(this.active)-1)).html();
-    alert(choice);
+    // alert(choice);
     // console.log(this.active)
 }
 
@@ -52,7 +52,7 @@ function sendBiu(){
         dataType:"json",
         success:function(data){
             console.log(data);
-
+            alert("Biu~请留意大屏幕");
         },
         error: function(){
             console.log('sendBiu*****xxx');
