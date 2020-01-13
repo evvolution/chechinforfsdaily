@@ -7,18 +7,21 @@
 
 $(document).ready(function(){  
     checkisHavePhone();
-    ischecked();
 })
+
+window.onload = function() {
+    ischecked();
+}
 
 var link = 'http://server.foshanplus.com/'
 var openid = getParam('openid');
-//  openid = 'odVsFj2syVFzvlPEYTID7L9k_hmw';
+// openid = 'odV5Fj2ssVF2vl12YTID739_1mw';
 var userid = '';
 var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
 var username = getParam('name');
-//  username = 'Gezelligheid';
-var userfakephone = 'fake';
+username = 'Gezelligheid';
+var usernewphone = 'fake';
 var todaydate = '2020-01-13';
 var choice = '';
 
@@ -46,6 +49,7 @@ function checkisHavePhone(){
         type:"get",
         url: link + 'wxusers/?openid=' + openid,
         dataType:"json",
+        async:false,
         success:function(datax){
             console.log(datax);
             if(datax.results.length == 0){
@@ -55,28 +59,35 @@ function checkisHavePhone(){
                 $.ajax({
                     type:"post",
                     url: link + 'wxusers/',
-                    data:{"head_pic":usericon,"openid":openid,"name":username,"phone":userfakephone},
+                    data:{"head_pic":usericon,"openid":openid,"name":username,"phone":usernewphone},
                     dataType:"json",
                     success:function(data){
                         // console.log(data);
+                        // console.log(data.id);
                         userid = data.id;
+                        // usernewphone = datax.results[0].phone;
+                        // username = datax.results[0].name;
                     },
                     error: function(){
                         console.log('checkisHavePhoneIIIIN*****xxx');
                         alert("系统繁忙，请重试");
                     }
                 })
-            }else if(datax.results[0].phone == "fake"){
-                $("#userinfo").css("display","block");//显示用户信息
-                $("#checkin").css("display","none");//隐藏签到
-                $("#sendgreetingall").css("display","none");//隐藏留言
             }else{
-                $("#userinfo").css("display","none");//隐藏用户信息
-                $("#checkin").css("display","block");//显示签到
-                $("#sendgreetingall").css("display","none");//隐藏留言
+                usernewphone = datax.results[0].phone;
                 username = datax.results[0].name;
-                $("#username").html(username + ',');
-                $("#usernamewelcome").html(username + ',');
+                if(usernewphone == "fake"){
+                    $("#userinfo").css("display","block");//显示用户信息
+                    $("#checkin").css("display","none");//隐藏签到
+                    $("#sendgreetingall").css("display","none");//隐藏留言
+                }else{
+                    // alert(1)
+                    $("#userinfo").css("display","none");//隐藏用户信息
+                    $("#checkin").css("display","block");//显示签到
+                    $("#sendgreetingall").css("display","none");//隐藏留言
+                    $("#username").html(username + ',');
+                    $("#usernamewelcome").html(username + ',');
+                }
             }
         },
         error: function(){
@@ -91,17 +102,22 @@ function ischecked(){
         type:"get",
         url: link + 'examlog/?exam=12&created_gte=' + todaydate + '&openid=' + openid,
         dataType:"json",
+        // async:true,
         success:function(data){
-            // console.log(data);
-            if((data.results.length == 0) && (userfakephone == "fake")){
-                $("#userinfo").css("display","block");//隐藏用户信息
-                $("#checkin").css("display","none");//显示签到
+            console.log(data);
+            console.log(data.results.length);
+            if((data.results.length == 0) && (usernewphone == "fake")){
+                console.log(1)
+                $("#userinfo").css("display","block");//显示用户信息
+                $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言 
-            }else if((data.results.length != 0) && (userfakephone != "fake")){
+            }else if((data.results.length > 0) && (usernewphone != "fake")){
+                console.log(2)
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","block");//显示留言 
-            }else if((data.results.length == 0) && (userfakephone != "fake")){
+            }else if((data.results.length == 0) && (usernewphone != "fake")){
+                console.log(3)
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","block");//显示签到
                 $("#sendgreetingall").css("display","none");//隐藏留言 
@@ -158,9 +174,10 @@ function confirmuserphone(){
                 data:{"id":userid,"openid":openid,"phone":userphone},
                 async:false,
                 success:function(data){
-                    // console.log(userid)
-                    // console.log(data)
-                    alert("手机号登记成功");
+                    console.log(userid)
+                    console.log(data)
+                    // alert("手机号登记成功");
+                    usernewphone = userphone;
                     $("#userinfo").css("display","none");//隐藏用户信息
                     $("#checkin").css("display","block");//显示签到
                     $("#sendgreetingall").css("display","none");//隐藏留言
@@ -168,7 +185,7 @@ function confirmuserphone(){
                 },
                 error: function(){
                     console.log('confirmuserphone*****xxx');
-                    alert("系统繁忙，请重试");
+                    alert("手机号登记失败");
                 }
             })
         }else{
