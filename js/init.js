@@ -131,7 +131,7 @@ function confirmuserphone(){
                 type:"PUT",
                 url: link + 'wxusers/'+ userid,
                 data:{"id":userid,"openid":openid,"phone":userphone},
-                async:false,
+                async:true,
                 success:function(data){
                     alert("手机号登记成功");
                     $("#userinfo").css("display","none");//隐藏用户信息
