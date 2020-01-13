@@ -8,6 +8,7 @@
   appearance: none;
   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
   box-shadow: 0 2px 25px rgba(185, 97, 48, 0.5);
+  -webkit-tap-highlight-color: transparent;
 }
 .bubbly-button:focus {
   outline: 0;
@@ -36,9 +37,9 @@
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
 }
 .bubbly-button:active {
-  transform: scale(0.9);
+  transform: scale(1.2);
   background-color: #b96130;
-  box-shadow: 0 2px 25px rgba(185, 97, 48, 0.2);
+  /* box-shadow: 0 2px 25px rgba(185, 97, 48, 0.2); */
 }
 .bubbly-button.animate:before {
   display: block;
