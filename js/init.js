@@ -133,7 +133,7 @@ function confirmuserphone(){
                 data:{"id":userid,"openid":openid,"phone":userphone},
                 async:true,
                 success:function(data){
-                    alert("手机号登记成功");
+                    // alert("手机号登记成功");
                     $("#userinfo").css("display","none");//隐藏用户信息
                     $("#checkin").css("display","block");//显示签到
                     $("#sendgreetingall").css("display","none");//隐藏留言
