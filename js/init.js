@@ -48,7 +48,7 @@ function checkisHavePhone(){
         dataType:"json",
         success:function(datax){
             console.log(datax);
-            if((datax.results.length == 0)){
+            if(datax.results.length == 0){
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
@@ -93,14 +93,18 @@ function ischecked(){
         dataType:"json",
         success:function(data){
             // console.log(data);
-            if(data.results.length == 0){
-                $("#userinfo").css("display","none");//隐藏用户信息
-                $("#checkin").css("display","block");//显示签到
+            if((data.results.length == 0) && (userfakephone == "fake")){
+                $("#userinfo").css("display","block");//隐藏用户信息
+                $("#checkin").css("display","none");//显示签到
                 $("#sendgreetingall").css("display","none");//隐藏留言 
-            }else{
+            }else if((data.results.length != 0) && (userfakephone != "fake")){
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","block");//显示留言 
+            }else if((data.results.length == 0) && (userfakephone != "fake")){
+                $("#userinfo").css("display","none");//隐藏用户信息
+                $("#checkin").css("display","block");//显示签到
+                $("#sendgreetingall").css("display","none");//隐藏留言 
             }
         },
         error: function(){
