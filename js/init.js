@@ -11,12 +11,13 @@ $(document).ready(function(){
 
 var link = 'http://server.foshanplus.com/'
 var openid = getParam('openid');
-// openid = 'odVsFj1vvasAMVEYem_0piudYl9Y';
-var userid = getParam('id');
-// userid = '628';
-var usericon = getParam('icon');
+// openid = 'odVsFj1xvasAMVEYem_0piux220Y';
+var userid = '';
+var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
-var username = '';
+var username = getParam('name');
+// username = '22223';
+var userfakephone = '';
 var todaydate = '2020-01-13';
 var choice = '';
 
@@ -45,7 +46,26 @@ function checkisHavePhone(){
         url: link + 'wxusers/?openid=' + openid,
         dataType:"json",
         success:function(data){
-            if((data.results.length == 0) || (data.results[0].phone == "")){
+            // console.log(data);
+            if((data.results.length == 0)){
+                $("#userinfo").css("display","block");//显示用户信息
+                $("#checkin").css("display","none");//隐藏签到
+                $("#sendgreetingall").css("display","none");//隐藏留言
+                $.ajax({
+                    type:"post",
+                    url: link + 'wxusers/',
+                    data:{"head_pic":usericon,"openid":openid,"name":username,"phone":userfakephone},
+                    dataType:"json",
+                    success:function(data){
+                        // console.log(data);
+                        userid = data.id;
+                    },
+                    error: function(){
+                        console.log('checkisHavePhoneIIIIN*****xxx');
+                        alert("系统繁忙，请重试");
+                    }
+                })
+            }else if(data.results[0].phone == ""){
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
@@ -57,7 +77,6 @@ function checkisHavePhone(){
                 $("#username").html(username + ',');
                 $("#usernamewelcome").html(username + ',');
             }
-            // console.log(data);
         },
         error: function(){
             console.log('checkisHavePhone*****xxx');
@@ -97,7 +116,7 @@ function checkedin(){
         data:{"exam":12,"openid":openid},
         dataType:"json",
         success:function(data){
-            console.log(data);
+            // console.log(data);
             if(data.is_error == false){//签到成功
                 alert("签到成功");
                 $("#userinfo").css("display","none");//隐藏用户信息
@@ -117,6 +136,7 @@ function checkedin(){
 }
 
 function confirmuserphone(){
+    console.log(userid)
     var userphone = $("#userphone").val();
     if(userphone == ""){
         alert("请输入您的手机号");
@@ -131,15 +151,16 @@ function confirmuserphone(){
                 type:"PUT",
                 url: link + 'wxusers/'+ userid,
                 data:{"id":userid,"openid":openid,"phone":userphone},
-                async:true,
+                async:false,
                 success:function(data){
-                    // alert("手机号登记成功");
+                    // console.log(userid)
+                    // console.log(data)
+                    alert("手机号登记成功");
                     $("#userinfo").css("display","none");//隐藏用户信息
                     $("#checkin").css("display","block");//显示签到
                     $("#sendgreetingall").css("display","none");//隐藏留言
                     $("#usernamewelcome").html(username + ',');
                     ischecked();
-                    // console.log(data)
                 },
                 error: function(){
                     console.log('confirmuserphone*****xxx');
