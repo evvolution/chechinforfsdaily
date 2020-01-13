@@ -20,7 +20,7 @@ var userid = '';
 var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
 var username = getParam('name');
-username = 'Gezelligheid';
+// username = 'Gezelligheid';
 var usernewphone = 'fake';
 var todaydate = '2020-01-13';
 var choice = '';
@@ -104,20 +104,20 @@ function ischecked(){
         dataType:"json",
         // async:true,
         success:function(data){
-            console.log(data);
-            console.log(data.results.length);
+            // console.log(data);
+            // console.log(data.results.length);
             if((data.results.length == 0) && (usernewphone == "fake")){
-                console.log(1)
+                // console.log(1)
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言 
             }else if((data.results.length > 0) && (usernewphone != "fake")){
-                console.log(2)
+                // console.log(2)
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","block");//显示留言 
             }else if((data.results.length == 0) && (usernewphone != "fake")){
-                console.log(3)
+                // console.log(3)
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","block");//显示签到
                 $("#sendgreetingall").css("display","none");//隐藏留言 
@@ -174,7 +174,7 @@ function confirmuserphone(){
                 data:{"id":userid,"openid":openid,"phone":userphone},
                 async:false,
                 success:function(data){
-                    console.log(userid)
+                    // console.log(userid)
                     console.log(data)
                     // alert("手机号登记成功");
                     usernewphone = userphone;
