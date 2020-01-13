@@ -16,12 +16,12 @@ window.onload = function() {
 
 var link = 'http://server.foshanplus.com/'
 var openid = getParam('openid');
-// openid = 'odV5Fj2ssVF2vl12YTID739_1mw';
+// openid = 'odV5F22ssVF2vl12YTId739_1mw';
 var userid = '';
 var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
 var username = getParam('name');
-// username = 'Gezelligheid2';
+// username = 'Gezelligheid3';
 var usernewphone = 'fake';
 var todaydate = '2020-01-13';
 var choice = '';
@@ -35,8 +35,8 @@ const machine1 = new SlotMachine(el1, {
 
 function onComplete(active){
     this.element.id = 'Index: ${this.active}';
-    choice = $('#greet' + this.active).html();
-    // alert(choice);
+    choice = $('#greet' + (Number(this.active)-1)).html();
+    alert(choice);
     // console.log(this.active)
 }
 
@@ -52,6 +52,7 @@ function sendBiu(){
         dataType:"json",
         success:function(data){
             console.log(data);
+
         },
         error: function(){
             console.log('sendBiu*****xxx');
