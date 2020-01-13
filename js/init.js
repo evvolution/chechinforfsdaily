@@ -7,7 +7,6 @@
 
 $(document).ready(function(){  
     checkisHavePhone();
-    ischecked();
 })
 
 var link = 'http://server.foshanplus.com/'
@@ -47,7 +46,6 @@ function checkisHavePhone(){
         dataType:"json",
         success:function(data){
             if((data.results.length == 0) || (data.results[0].phone == "")){
-                alert(1)
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
@@ -139,6 +137,7 @@ function confirmuserphone(){
                     $("#checkin").css("display","block");//显示签到
                     $("#sendgreetingall").css("display","none");//隐藏留言
                     $("#usernamewelcome").html(username + ',');
+                    ischecked();
                     // console.log(data)
                 },
                 error: function(){
