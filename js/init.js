@@ -147,7 +147,7 @@ function confirmuserphone(){
                 }
             })
         }else{
-            alert(2)
+            return;
         }
     }
 }
