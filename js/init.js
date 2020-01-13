@@ -46,9 +46,9 @@ function checkisHavePhone(){
         type:"get",
         url: link + 'wxusers/?openid=' + openid,
         dataType:"json",
-        success:function(data){
+        success:function(datax){
             // console.log(data);
-            if((data.results.length == 0)){
+            if((datax.results.length == 0)){
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
@@ -66,7 +66,7 @@ function checkisHavePhone(){
                         alert("系统繁忙，请重试");
                     }
                 })
-            }else if(data.results[0].phone == ""){
+            }else if(datax.results[0].phone == ""){
                 $("#userinfo").css("display","block");//显示用户信息
                 $("#checkin").css("display","none");//隐藏签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
@@ -74,7 +74,7 @@ function checkisHavePhone(){
                 $("#userinfo").css("display","none");//隐藏用户信息
                 $("#checkin").css("display","block");//显示签到
                 $("#sendgreetingall").css("display","none");//隐藏留言
-                username = data.results[0].name;
+                username = datax.results[0].name;
                 $("#username").html(username + ',');
                 $("#usernamewelcome").html(username + ',');
             }
