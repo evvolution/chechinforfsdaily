@@ -7,6 +7,7 @@
 
 $(document).ready(function(){  
     checkisHavePhone();
+    ischecked();
 })
 
 var link = 'http://server.foshanplus.com/'
@@ -160,7 +161,6 @@ function confirmuserphone(){
                     $("#checkin").css("display","block");//显示签到
                     $("#sendgreetingall").css("display","none");//隐藏留言
                     $("#usernamewelcome").html(username + ',');
-                    ischecked();
                 },
                 error: function(){
                     console.log('confirmuserphone*****xxx');
