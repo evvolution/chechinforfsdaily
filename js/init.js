@@ -20,7 +20,7 @@ var openid = getParam('openid');
 var userid = '';
 var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
-var username = getParam('name');
+var username = getQueryString('name');
 alert(username)
 // username = 'Gezelligheid3';
 var usernewphone = 'fake';
@@ -219,4 +219,10 @@ function getParam(paramName) {
         while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
     }
     return paramValue == "" && (paramValue = null), paramValue
+}
+
+function getQueryString(name) {   
+      var reg = new RegExp( " (^|&) " + name + " = ([^&]*)(&|$) " );   
+      var r = window.location.search.substr( 1 ).match( reg );   
+      if( r != null ) return decodeURI( r[2] ); return null;   
 }
