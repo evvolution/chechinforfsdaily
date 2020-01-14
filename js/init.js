@@ -22,7 +22,7 @@ var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
 var username = getQueryString('name');
 // username = '测试名字';
-alert(username)
+// alert(username)
 var usernewphone = 'fake';
 var todaydate = '2020-01-14';
 var choice = '';
@@ -225,4 +225,4 @@ function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");   
     var r = window.location.search.substr(1).match(reg);   
     if (r != null) return decodeURI(r[2]); return null;   
-}  
+} 
