@@ -23,7 +23,7 @@ var usericon = getParam('headimg');
 var username = getParam('name');
 // username = 'Gezelligheid3';
 var usernewphone = 'fake';
-var todaydate = '2020-01-13';
+var todaydate = '2020-01-14';
 var choice = '';
 
 const btn = document.querySelector('#random');
