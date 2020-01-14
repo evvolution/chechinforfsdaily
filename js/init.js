@@ -21,6 +21,7 @@ var userid = '';
 var usericon = getParam('headimg');
 // usericon = "http://thirdwx.qlogo.cn/mmopen/vi_32/HK2sJo7x8FHIPxlLuoFicHKqKa5268K88aF7um7fdtjbJ6LQ1YfDubLuc1468xaTfSP4Yzyq6icWjlJF1sas2QiaQ/132";
 var username = getParam('name');
+alert(username)
 // username = 'Gezelligheid3';
 var usernewphone = 'fake';
 var todaydate = '2020-01-14';
