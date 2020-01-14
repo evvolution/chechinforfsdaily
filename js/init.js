@@ -46,6 +46,9 @@ btn.addEventListener('click', () => {
 });
 
 function sendBiu(){
+    if(choice == ''){
+        choice = '新年快乐!';
+    }
     $.ajax({
         type:"post",
         url: link + 'message/add_msg/',
@@ -53,7 +56,8 @@ function sendBiu(){
         dataType:"json",
         success:function(data){
             console.log(data);
-            alert("Biu~请留意大屏幕");
+            alert("Biu~请留意留言墙");
+            window.location.reload();
         },
         error: function(){
             console.log('sendBiu*****xxx');
