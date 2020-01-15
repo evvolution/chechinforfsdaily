@@ -79,6 +79,7 @@ body{
 .foot{
     position: absolute;
     bottom: -2rem;
+    z-index: -1;
 }
 
 .foot img{
