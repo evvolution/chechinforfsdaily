@@ -24,7 +24,7 @@ var username = getQueryString('name');
 // username = '测试名字';
 // alert(username)
 var usernewphone = 'fake';
-var todaydate = '2020-01-14';
+var todaydate = '2020-01-15';
 var choice = '';
 
 const btn = document.querySelector('#random');
